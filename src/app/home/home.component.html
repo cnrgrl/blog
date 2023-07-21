@@ -38,8 +38,20 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button color="accent">Görüntüle</button>
-          <button mat-raised-button color="primary">Düzenle</button>
+          <button
+            (click)="openDialog(post, false)"
+            mat-raised-button
+            color="accent"
+          >
+            Görüntüle
+          </button>
+          <button
+            (click)="openDialog(post, true)"
+            mat-raised-button
+            color="primary"
+          >
+            Düzenle
+          </button>
         </mat-card-actions>
       </mat-card>
     </div>

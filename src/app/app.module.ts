@@ -10,15 +10,18 @@ import { MatCardModule } from '@angular/material/card';
 import { BaseService } from './services/base.services';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BlogDialogComponent } from './home/blog-dialog/blog-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, BlogDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
+    MatDialogModule,
     HttpClientModule,
     NgbModule,
   ],
