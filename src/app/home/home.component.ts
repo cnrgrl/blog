@@ -7,7 +7,9 @@ import { BlogService } from '../services/blog.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  blogData: any = [];
+  pageSize = 8;
+  page = 13;
+  blogData: Array<any> = [];
   constructor(private blogService: BlogService) {}
 
   ngOnInit(): void {
