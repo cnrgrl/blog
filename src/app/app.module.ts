@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BlogDialogComponent } from './home/blog-dialog/blog-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, BlogDialogComponent],
@@ -23,6 +24,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatCardModule,
     MatDialogModule,
     HttpClientModule,
+    MatDividerModule,
     NgbModule,
   ],
   providers: [BaseService],

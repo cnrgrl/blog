@@ -1,1 +1,11 @@
-<p>blog-dialog works!</p>
+<div style="display: flex; justify-content: space-between">
+  <div style="display: flex; align-items: center">
+    <h3 style="margin: 0px">
+      <span>
+        {{ isUpdate ? "Yaziyi Güncelle " : " yaziyi görümtüle" }}
+      </span>
+    </h3>
+  </div>
+  <button mat-button (click)="close()" style="font-size: 24px">X</button>
+</div>
+<mat-divider></mat-divider>
