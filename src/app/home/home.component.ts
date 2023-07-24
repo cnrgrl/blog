@@ -23,8 +23,8 @@ export class HomeComponent implements OnInit {
   openDialog(element: any, vieworupdate: any) {
     const dialogRef = this.dialog.open(BlogDialogComponent, {
       data: { blog: element, isUpdate: vieworupdate },
-      height: '400px',
-      width: '600px',
+      // height: '400px',
+      // width: '600px',
     });
   }
 }

@@ -8,13 +8,21 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class BlogDialogComponent implements OnInit {
   isUpdate: boolean = false;
+  imageUrl: string = ';';
+  title: string = ';';
+  body: string = ';';
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<BlogDialogComponent>
   ) {
+    // debugger;
     if (data.isUpdate) {
       this.isUpdate = true;
     } else {
+      this.imageUrl = data.blog.imageId.toString();
+      this.title = data.blog.title;
+      this.body = data.blog.body;
     }
   }
 
