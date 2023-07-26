@@ -8,7 +8,7 @@ export class CommentService extends BaseService {
   constructor(private base: BaseService) {
     super(base.http);
   }
-  public getUsers() {
+  public getComments() {
     return this.base.getReq('/comments');
   }
 }

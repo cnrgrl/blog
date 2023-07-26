@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-blog-dialog',
@@ -11,12 +12,13 @@ export class BlogDialogComponent implements OnInit {
   imageUrl: string = ';';
   title: string = ';';
   body: string = ';';
+  commentData: any = ';';
 
   constructor(
+    private commentService: CommentService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<BlogDialogComponent>
   ) {
-    // debugger;
     if (data.isUpdate) {
       this.isUpdate = true;
     } else {
@@ -26,7 +28,14 @@ export class BlogDialogComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.commentService.getComments().subscribe((res) => {
+      this.commentData = res.filter(
+        (r: { postId: any }) => r.postId == this.data.blog.id
+      );
+      // debugger;
+    });
+  }
   close() {
     this.dialogRef.close('kapandi');
   }
