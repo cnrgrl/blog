@@ -8,7 +8,7 @@
   </div>
   <button mat-button (click)="close()" style="font-size: 24px">X</button>
 </div>
-<mat-divider></mat-divider>
+<mat-divider class="mb-2"></mat-divider>
 <div *ngIf="!isUpdate">
   <div class="row mb-5">
     <div class="col-md-6" style="padding-left: 0px">
@@ -36,4 +36,36 @@
     </div>
   </div>
 </div>
-<div *ngIf="!isUpdate"></div>
+<div *ngIf="isUpdate">
+  <form [formGroup]="form" style="min-width: 350px">
+    <div class="container">
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Blog Basligi</mat-label>
+          <input matInput formControlName="title" />
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Blog content</mat-label>
+          <textarea
+            matInput
+            formControlName="body"
+            cols="30"
+            rows="10"
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <button
+        mat-raised-button
+        [disabled]="!form.valid"
+        color="primary"
+        (click)="(onSubmit)"
+      >
+        Güncelle
+      </button>
+    </div>
+  </form>
+</div>

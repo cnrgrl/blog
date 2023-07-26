@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CommentService } from 'src/app/services/comment.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-blog-dialog',
@@ -14,6 +16,11 @@ export class BlogDialogComponent implements OnInit {
   body: string = ';';
   commentData: any = ';';
 
+  form = new FormGroup({
+    title: new FormControl(null, [Validators.required]),
+    body: new FormControl(null, [Validators.required]),
+  });
+
   constructor(
     private commentService: CommentService,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -21,6 +28,10 @@ export class BlogDialogComponent implements OnInit {
   ) {
     if (data.isUpdate) {
       this.isUpdate = true;
+      this.form.patchValue({
+        title: data.blog.title,
+        body: data.blog.body,
+      });
     } else {
       this.imageUrl = data.blog.imageId.toString();
       this.title = data.blog.title;
@@ -36,6 +47,8 @@ export class BlogDialogComponent implements OnInit {
       // debugger;
     });
   }
+  onSubmit() {}
+
   close() {
     this.dialogRef.close('kapandi');
   }
