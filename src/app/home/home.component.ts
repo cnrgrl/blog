@@ -15,16 +15,20 @@ export class HomeComponent implements OnInit {
   constructor(private blogService: BlogService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.blogService.getPosts().subscribe((res) => {
-      console.log(res);
-      this.blogData = res;
-    });
+    this.getBloglist();
   }
   openDialog(element: any, vieworupdate: any) {
     const dialogRef = this.dialog.open(BlogDialogComponent, {
       data: { blog: element, isUpdate: vieworupdate },
-      // height: '400px',
-      // width: '600px',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getBloglist();
+    });
+  }
+  getBloglist() {
+    this.blogService.getPosts().subscribe((res) => {
+      console.log(res);
+      this.blogData = res;
     });
   }
 }

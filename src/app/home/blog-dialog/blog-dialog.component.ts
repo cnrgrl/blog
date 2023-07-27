@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CommentService } from 'src/app/services/comment.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'app-blog-dialog',
@@ -22,6 +23,7 @@ export class BlogDialogComponent implements OnInit {
   });
 
   constructor(
+    private blogService: BlogService,
     private commentService: CommentService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<BlogDialogComponent>
@@ -47,7 +49,20 @@ export class BlogDialogComponent implements OnInit {
       // debugger;
     });
   }
-  onSubmit() {}
+  onSubmit() {
+    const request = {
+      title: this.form.get('title')?.value,
+      body: this.form.get('body')?.value,
+      imageId: this.data.blog.imageId,
+      userId: this.data.blog.userId,
+    };
+    this.blogService
+      .UpdatePosts(this.data.blog.id, request)
+      .subscribe((res) => {
+        console.log(res);
+        this.dialogRef.close();
+      });
+  }
 
   close() {
     this.dialogRef.close('kapandi');
